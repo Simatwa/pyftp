@@ -34,9 +34,8 @@ jobs:
         python-version: '3.11'
     - name: Install dependencies and pyftp
       run: |
-        python -m pip install --upgrade pip pyinstaller
+        python -m pip install --upgrade pyinstaller
         python -m pip install -r requirements.txt
-        python -m pip install .
     - name: Build executable
       run: |
         pyinstaller main.py --onefile --exclude pandas --distpath dist --workpath build --log-level INFO --exclude numpy --exclude matplotlib --exclude PyQt5 --exclude PyQt6 --exclude share --icon assets/logo.png --contents-directory .  --noconfirm --name ${{ matrix.artifact_name }}
